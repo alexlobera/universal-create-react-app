@@ -9,16 +9,18 @@ const nodeExternals = require('webpack-node-externals');
 
 const base = require('./webpack.config.base');
 
-base.target = 'node'
-base.entry = './src/server'
-base.externals = [nodeExternals()] // / in order to ignore all modules in node_modules folder
-base.output = {
+const config = Object.assign({}, base)
+
+config.target = 'node'
+config.entry = './src/server'
+config.externals = [nodeExternals()] // / in order to ignore all modules in node_modules folder
+config.output = {
   path: paths.serverBuild,
   filename: 'bundle.js',
   publicPath: '/'
 },
 
-base.node = {
+config.node = {
   console: false,
   global: false,
   process: false,
@@ -28,4 +30,4 @@ base.node = {
   setImmediate: false,
 }
 
-module.exports = base
+module.exports = config

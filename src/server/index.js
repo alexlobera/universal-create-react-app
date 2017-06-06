@@ -20,7 +20,8 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   // Otherwise we want to proxy the webpack development server.
   app.use('/static', proxy({
-    target: 'http://localhost:3020',
+    target: `http://localhost:${global.CLIENT_PORT || 3020}`,
+    //target: `http://localhost:3020`,
     ws: true,
     logLevel: 'warn'
   }));
@@ -28,5 +29,6 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(reactApp)
 
-app.listen(config.port)
-console.log(`Listening at http://${config.host}:${config.port}`)
+const port = global.SERVER_PORT || config.port
+app.listen(port)
+console.log(`Listening at http://${config.host}:${port}`)

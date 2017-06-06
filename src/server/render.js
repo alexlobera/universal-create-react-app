@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server'
 
 const DEV = process.env.NODE_ENV === 'development'
-// TODO: move this to config and set according to environment
+
 const bundleUrl = DEV ?
   '/static/js/bundle.js' :
   '/static/js/main[hash].js'
