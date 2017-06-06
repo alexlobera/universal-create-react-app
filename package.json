@@ -2,7 +2,7 @@
   "name": "universal-create-react-app",
   "version": "0.1.0",
   "scripts": {
-    "start": "NODE_ENV=development concurrently -c blue,yellow,magenta \"npm run dev-build-server\" \"sleep 3 && npm run dev-run-server\" \"npm run dev-build-and-run-client\"",
+    "start": "NODE_ENV=development concurrently -c blue,grey,magenta \"npm run dev-build-server\" \"sleep 3 && npm run dev-run-server\" \"npm run dev-build-and-run-client\"",
     "dev-build-server": "NODE_ENV=development webpack --watch --config config/webpack.config.dev.server.js",
     "dev-run-server": "NODE_ENV=development nodemon --watch build/server build/server/bundle.js",
     "dev-build-and-run-client": "NODE_ENV=development webpack-dev-server -d --hot --inline --no-info --port 3020 --config config/webpack.config.dev.client.js",
