@@ -4,7 +4,6 @@ import {
   Link
 } from 'react-router-dom'
 
-//import './index.css'; css-loader are disabed because they don't work on the server side
 import logo from './logo.svg';
 
 const App = () => (

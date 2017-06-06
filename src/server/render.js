@@ -8,7 +8,6 @@ export default (component, storeInitiaState = undefined) => `
     <html>
       <head>
         <meta charset="utf-8">
-        <link href="/public/app.css" integrity="" media="all" rel="stylesheet" />
         <link rel="manifest" href="/public/manifest.json">
         <title>Masters Directory</title>
         <script>

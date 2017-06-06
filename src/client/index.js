@@ -6,7 +6,7 @@ import {
 
 import App from '../shared/App';
 import registerServiceWorker from './registerServiceWorker';
-//import './index.css'; css-loader are disabed because they don't work on the server side
+import './index.css';
 
 ReactDOM.render(
   <Router>
