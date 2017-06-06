@@ -7,7 +7,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const paths = require('./paths');
 
-const base = require('./webpack.config.dev.base');
+const base = require('./webpack.config.base');
 
 base.entry = [
   // Include an alternative client for WebpackDevServer. A client's job is to
@@ -100,5 +100,20 @@ base.plugins = base.plugins.concat([
   // See https://github.com/facebookincubator/create-react-app/issues/186
   new WatchMissingNodeModulesPlugin(paths.appNodeModules),
 ])
+
+// Turn off performance hints during development because we don't do any
+// splitting or minification in interest of speed. These warnings become
+// cumbersome.
+base.performance = {
+  hints: false,
+}
+
+// Some libraries import Node modules but don't use them in the browser.
+// Tell Webpack to provide empty mocks for them so importing them works.
+base.node = {
+  fs: 'empty',
+  net: 'empty',
+  tls: 'empty',
+},
 
 module.exports = base

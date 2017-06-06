@@ -7,13 +7,13 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
 
-const base = require('./webpack.config.dev.base');
+const base = require('./webpack.config.base');
 
 base.target = 'node'
 base.entry = './src/server'
 base.externals = [nodeExternals()] // / in order to ignore all modules in node_modules folder
 base.output = {
-  path: `${paths.appBuild}/server`,
+  path: paths.serverBuild,
   filename: 'bundle.js',
   publicPath: '/'
 },

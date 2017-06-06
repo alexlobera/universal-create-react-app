@@ -16,7 +16,7 @@ app.use(favicon(path.join(__dirname, '../../public', 'favicon.ico')))
 if (process.env.NODE_ENV === 'production') {
   // In production we want to serve our JavaScripts from a file on the file
   // system.
-  app.use('/static', express.static(path.join(process.cwd(), 'build/client')));
+  app.use('/static', express.static(path.join(process.cwd(), 'build/client/static')));
 } else {
   // Otherwise we want to proxy the webpack development server.
   app.use('/static', proxy({

@@ -1,13 +1,21 @@
 import { renderToString } from 'react-dom/server'
 
-// TODO: move this to config
-const bundleUrl = '/static/js/bundle.js'
+const DEV = process.env.NODE_ENV === 'development'
+// TODO: move this to config and set according to environment
+const bundleUrl = DEV ?
+  '/static/js/bundle.js' :
+  '/static/js/main[hash].js'
+
+const css = DEV ?
+  '' :
+  `<link href="/static/css/main[hash].css" media="all" rel="stylesheet" />`
 
 export default (component, storeInitiaState = undefined) => `
   <!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
+        ${css}
         <link rel="manifest" href="/public/manifest.json">
         <title>Masters Directory</title>
         <script>
