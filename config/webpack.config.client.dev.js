@@ -9,7 +9,9 @@ const paths = require('./paths');
 
 const base = require('./webpack.config.base');
 
-base.entry = [
+const config = Object.assign({}, base)
+
+config.entry = [
   // Include an alternative client for WebpackDevServer. A client's job is to
   // connect to WebpackDevServer by a socket and get notified about changes.
   // When you save a file, the client will either apply hot updates (in case
@@ -32,7 +34,7 @@ base.entry = [
   // changing JS code would still trigger a refresh.
 ]
 
-base.output = {
+config.output = {
   // Next line is not used in dev but WebpackDevServer crashes without it:
   path: paths.appBuild,
   // Add /* filename */ comments to generated require()s in the output.
@@ -45,12 +47,14 @@ base.output = {
   chunkFilename: 'static/js/[name].chunk.js',
   // This is the URL that app is served from. We use "/" in development.
   publicPath: '/',
+  hotUpdateChunkFilename: 'static/[id].[hash].hot-update.js',
+  hotUpdateMainFilename: 'static/[hash].hot-update.json',
   // Point sourcemap entries to original disk location
   devtoolModuleFilenameTemplate: info =>
     path.resolve(info.absoluteResourcePath),
 }
 
-base.module.rules = base.module.rules.concat([
+config.module.rules = config.module.rules.concat([
   // "postcss" loader applies autoprefixer to our CSS.
   // "css" loader resolves paths in CSS and adds assets as dependencies.
   // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -87,7 +91,8 @@ base.module.rules = base.module.rules.concat([
     ],
   },
 ])
-base.plugins = base.plugins.concat([
+
+config.plugins = config.plugins.concat([
   // This is necessary to emit hot updates (currently CSS only):
   new webpack.HotModuleReplacementPlugin(),
   // Watcher doesn't work well if you mistype casing in a path so we use
@@ -104,16 +109,16 @@ base.plugins = base.plugins.concat([
 // Turn off performance hints during development because we don't do any
 // splitting or minification in interest of speed. These warnings become
 // cumbersome.
-base.performance = {
+config.performance = {
   hints: false,
 }
 
 // Some libraries import Node modules but don't use them in the browser.
 // Tell Webpack to provide empty mocks for them so importing them works.
-base.node = {
+config.node = {
   fs: 'empty',
   net: 'empty',
   tls: 'empty',
 },
 
-module.exports = base
+module.exports = config

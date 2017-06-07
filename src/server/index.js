@@ -6,8 +6,6 @@ import proxy from 'http-proxy-middleware'
 import config from '../config'
 import reactApp from './app'
 
-// import routes from './routes'
-
 const app = express()
 
 app.use('/public', express.static('public'))
@@ -19,11 +17,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/static', express.static(path.join(process.cwd(), 'build/client/static')));
 } else {
   // Otherwise we want to proxy the webpack development server.
+
   app.use('/static', proxy({
     target: `http://localhost:${global.CLIENT_PORT || 3020}`,
-    //target: `http://localhost:3020`,
     ws: true,
-    logLevel: 'warn'
+    logLevel: 'info'
   }));
 }
 

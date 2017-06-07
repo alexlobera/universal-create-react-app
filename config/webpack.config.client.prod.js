@@ -14,6 +14,8 @@ const getClientEnvironment = require('./env');
 
 const base = require('./webpack.config.base');
 
+const config = Object.assign({}, base);
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -50,8 +52,8 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // The development configuration is different and lives in a separate file.
 
 // In production, we only want to load the polyfills and the app code.
-base.entry = [require.resolve('./polyfills'), paths.appIndexJs]
-base.output = {
+config.entry = [require.resolve('./polyfills'), paths.appIndexJs]
+config.output = {
   // The build folder.
   path: paths.appBuild,
   // Generated JS file names (with nested folders).
@@ -65,7 +67,7 @@ base.output = {
   devtoolModuleFilenameTemplate: info =>
     path.relative(paths.appSrc, info.absoluteResourcePath),
 }
-base.module.rules = base.module.rules.concat([
+config.module.rules = config.module.rules.concat([
   // The notation here is somewhat confusing.
   // "postcss" loader applies autoprefixer to our CSS.
   // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -122,7 +124,7 @@ base.module.rules = base.module.rules.concat([
   // Remember to add the new extension(s) to the "file" loader exclusion list.
 ])
 
-base.plugins = base.plugins.concat([
+config.plugins = config.plugins.concat([
   // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
   new ExtractTextPlugin({
     filename: cssFilename,
@@ -179,10 +181,10 @@ base.plugins = base.plugins.concat([
 
 // Some libraries import Node modules but don't use them in the browser.
 // Tell Webpack to provide empty mocks for them so importing them works.
-base.node = {
+config.node = {
   fs: 'empty',
   net: 'empty',
   tls: 'empty',
 }
 
-module.exports = base
+module.exports = config
