@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'production';
 
 const assetManifest = require('../build/client/asset-manifest.json');
 if (!assetManifest) {
-  console.log(chalk.red('No assets-manifest.json. Did you run the build-client script?.\n'));
+  console.log(chalk.red('No assets-manifest.json found. Did you run the build-client script?.\n'));
 }
 process.env.REACT_APP_ASSET_MANIFEST = JSON.stringify(assetManifest);
 
