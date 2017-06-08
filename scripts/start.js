@@ -84,7 +84,7 @@ choosePort(HOST, DEFAULT_CLIENT_PORT)
         return console.log(err);
       }
       if (isInteractive) {
-        // clearConsole();
+        clearConsole();
       }
       console.log(chalk.cyan(`Starting the client on port ${port}...\n`));
 
