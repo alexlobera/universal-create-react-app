@@ -6,8 +6,11 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
-
+const getClientEnvironment = require('./env');
 const base = require('./webpack.config.base');
+const publicUrl = '';
+// Get environment variables to inject into our app.
+const env = getClientEnvironment(publicUrl);
 
 const config = Object.assign({}, base)
 
@@ -18,22 +21,14 @@ config.output = {
   path: paths.serverBuild,
   filename: 'bundle.js',
   publicPath: '/'
-},
-/*
+}
+
 config.plugins = config.plugins.concat([
-  // This is necessary to emit hot updates (currently CSS only):
-  new webpack.HotModuleReplacementPlugin(),
-  // Watcher doesn't work well if you mistype casing in a path so we use
-  // a plugin that prints an error when you attempt to do this.
-  // See https://github.com/facebookincubator/create-react-app/issues/240
-  new CaseSensitivePathsPlugin(),
-  // If you require a missing module and then `npm install` it, you still have
-  // to restart the development server for Webpack to discover it. This plugin
-  // makes the discovery automatic so you don't have to restart.
-  // See https://github.com/facebookincubator/create-react-app/issues/186
-  new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+  // Makes some environment variables available to the JS code, for example:
+  // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
+  new webpack.DefinePlugin(env.stringified),
 ])
-*/
+
 config.node = {
   console: false,
   global: false,

@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const paths = require('./paths');
+const getClientEnvironment = require('./env');
 
 const base = require('./webpack.config.base');
 

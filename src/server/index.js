@@ -3,8 +3,12 @@ import favicon from 'serve-favicon'
 import path from 'path'
 import proxy from 'http-proxy-middleware'
 
-import config from '../config'
 import reactApp from './app'
+
+const host = process.env.REACT_APP_HOST || 'localhost'
+const serverPort = process.env.NODE_ENV === 'development'?
+  process.env.REACT_APP_SERVER_PORT :
+  process.env.REACT_APP_PORT || 80
 
 const app = express()
 
@@ -17,16 +21,14 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/static', express.static(path.join(process.cwd(), 'build/client/static')));
 } else {
   // Otherwise we want to proxy the webpack development server.
-
   app.use('/static', proxy({
-    target: `http://localhost:${global.CLIENT_PORT || 3020}`,
+    target: `http://localhost:${process.env.REACT_APP_CLIENT_PORT}`,
     ws: true,
-    logLevel: 'info'
+    logLevel: 'error'
   }));
 }
 
 app.use(reactApp)
 
-const port = global.SERVER_PORT || config.port
-app.listen(port)
-console.log(`Listening at http://${config.host}:${port}`)
+app.listen(serverPort)
+console.log(`Listening at http://${host}:${serverPort}`)
