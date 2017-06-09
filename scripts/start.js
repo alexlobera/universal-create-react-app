@@ -14,6 +14,7 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
+const { exec } = require('child_process');
 const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -99,19 +100,20 @@ choosePort(HOST, DEFAULT_CLIENT_PORT)
           const configWebpackServer = require('../config/webpack.config.server');
           const compiler = webpack(configWebpackServer);
           const urls = prepareUrls(protocol, HOST, portServer);
-          let browserOpened;
+          let isServerRunning;
 
           compiler.watch({ // watch options:
-              aggregateTimeout: 300, // wait so long for more changes
+            aggregateTimeout: 300,
           }, function(err, stats) {
-              if (err)
-                console.log('error on webpack server', err);
+            if (err)
+              console.log('error on webpack server', err);
 
-              const server = require('../build/server/bundle.js');
-              if (!browserOpened) {
-                browserOpened = true
-                openBrowser(urls.localUrlForBrowser);
-              }
+            if (!isServerRunning) {
+              isServerRunning = true
+              exec('nodemon --watch build/server build/server/bundle.js build/server/bundle.js')
+              console.log(chalk.yellow(`Starting the server on port ${portServer}...\n`));
+              setTimeout(() => { openBrowser(urls.localUrlForBrowser) }, 1000);
+            }
           });
         })
         .catch(err => {
