@@ -16,7 +16,7 @@ const App = () => (
         </div>
         <Route exact path="/" component={ ({ match }) => (
           <div className="App-intro">
-            <p>To get started, edit <code>src/App.js</code> and save to reload.</p>
+            <p>To get started, edit <code>src/shared/App.js</code> and save to reload.</p>
             <Link to={`/test/123`}>
               Test page
             </Link>
