@@ -22,7 +22,7 @@ The source code (src) is split in 3 folders:
 
 The server is implemented using Express
 
-There are two build scripts. One to build the bundle.js that will be sent to the client. By default from the same server but you could place in a CDN or anywhere else. The other build script builds the bundle that runs on the server.
+There are two build scripts. One to build the JavaScript bundle that will be sent to the client. By default from the same server but you could place in a CDN or anywhere else. The other build script builds the JavaScript bundle that runs on the server.
 - /scripts/build-client.js
 - /scripts/build-server.js
 
