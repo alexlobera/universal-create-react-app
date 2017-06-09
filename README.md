@@ -33,7 +33,7 @@ The start script will try to run the client (Webpack Dev Server) on a given port
 All the features that you have in create-react-app are included in this project, plus react-router v4.
 
 - `yarn start` will start two servers. First one (Webpack Dev Server) to build and serve the JavaScript bundle to the client. Second one (Express) to render the app on the server.
-- CSS Hot reload is enabled. You'll notice a quick adjustment of the layout on development mode when you start the app. That is because in development env the CSS is served via Webpack Hot Module Replacement. So the app is rendered without CSS from the server, and then on the client is injected when the JavaScript is run. If you run the app in production mode by executing `npm run serve` (notice you must first build the production bundle by executing `npm run build`), the CSS will be displayed from the beginning. The reason is we don't hot replace the CSS in production
+- CSS Hot reloading is enabled. You'll notice a quick adjustment of the layout on development mode when you start the app. That is because in development env the CSS is served via Webpack Hot Module Replacement. So the app is rendered without CSS from the server, and then on the client is injected when the JavaScript is run. If you run the app in production mode by executing `npm run serve` (notice you must first build the production bundle by executing `npm run build`), the CSS will be displayed from the beginning. The reason is we don't hot replace the CSS in production
 
 ## Acknowledgments
 
