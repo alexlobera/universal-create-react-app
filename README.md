@@ -22,7 +22,7 @@ The source code (src) is split in 3 folders:
 
 The server is implemented using [Express](http://expressjs.com/)
 
-There are two build scripts. One to build the JavaScript bundle that will be sent to the client. By default from the same server but you could place in a CDN or anywhere else. The other build script builds the JavaScript bundle that runs on the server.
+There are two build scripts. One to build the JavaScript bundle that will be sent to the client. By default from the same server but you could serve it via a CDN or anywhere else. The other build script builds the JavaScript bundle that runs on the server.
 - /scripts/build-client.js
 - /scripts/build-server.js
 
@@ -32,8 +32,8 @@ The start script will try to run the client (Webpack Dev Server) on a given port
 
 All the features that you have in create-react-app are included in this project, plus react-router v4.
 
-- `yarn start` will start two servers. First one (Webpack Dev Server) to build and serve the JavaScript bundle to the client. Second one (Express) to render the app on the server.
-- CSS Hot reloading is enabled. You'll notice a quick adjustment of the layout on development mode when you start the app. That is because in development env the CSS is served via Webpack Hot Module Replacement. So the app is rendered without CSS from the server, and then on the client is injected when the JavaScript is run. If you run the app in production mode by executing `npm run serve` (notice you must first build the production bundle by executing `npm run build`), the CSS will be displayed from the beginning. The reason is we don't hot replace the CSS in production
+- `yarn start` will start two servers. The first one (Webpack Dev Server), to build and serve the JavaScript bundle to the client. The Second one (Express), to render the app on the server.
+- CSS Hot reloading is enabled. You'll notice a quick adjustment to the layout in development mode when you start the app. This is because while in development env the CSS is served via the Webpack Hot Module Replacement. So the app is rendered without CSS from the server, and then on the client it is injected when the JavaScript is run. If you run the app in production mode by executing `npm run serve` (note, you must first build the production bundle by executing `npm run build`), the CSS will be displayed from the beginning. The reason for this is that we don't hot replace the CSS in production.
 
 ## Acknowledgments
 
