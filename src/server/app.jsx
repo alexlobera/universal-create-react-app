@@ -1,13 +1,10 @@
 import React from 'react'
 import { StaticRouter as Router, matchPath } from 'react-router'
-// import { Provider } from 'react-redux'
-// import routes from '../shared/config/Routes'
-// import configureStore from '../shared/store/configureStore'
 
 import render from './render'
 import App from '../shared/App'
 const NotFound = () => (<h1>Page not found</h1>)
-const ErrorPage = () => (<h1>Sorry, there was an error on this page</h1>)
+const ErrorPage = () => (<h1>Oops there was an error :-O</h1>)
 
 const routes = [
     '/',
