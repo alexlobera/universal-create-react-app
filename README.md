@@ -4,7 +4,7 @@ This project is a refactoring of the default app created by [create-react-app v1
 
 A universal app runs both on the server and the client, and shares as much code as possible between the server and client - typically around 90%.
 
-## How to run it
+## How to run this project
 
 - `yarn install`
 - `yarn start` to run it in development
