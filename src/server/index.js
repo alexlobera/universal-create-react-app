@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/static', express.static(path.join(process.cwd(), 'build/client/static')));
 } else {
   // Otherwise we want to proxy the webpack development server.
-  app.use('/static', proxy({
+  app.use(['/static','/sockjs-node'], proxy({
     target: `http://localhost:${process.env.REACT_APP_CLIENT_PORT}`,
     ws: true,
     logLevel: 'error'

@@ -1,34 +1,28 @@
 import React from 'react'
 import { StaticRouter as Router, matchPath } from 'react-router'
+import Context from 'react-context-component'
 
 import render from './render'
 import App from '../shared/App'
-const NotFound = () => (<h1>Page not found</h1>)
-const ErrorPage = () => (<h1>Oops there was an error :-O</h1>)
 
-const routes = [
-    '/',
-    '/test/:id'
-];
+const ErrorPage = () => <h1>Oops there was an error</h1>
 
 const reactApp = (req, res) => {
   const context = {}
-  const storeInitiaState = undefined
-
-  const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
-  if (!match) {
-    res.status(404).send(render(<NotFound />))
-    return
-  }
-
   let HTML
   let status = 200
+
+  const setStatus = (newStatus) => {
+    status = newStatus
+  }
+
   try {
     HTML = render(
-      <Router context={{}} location={req.url}>
-        <App />
-      </Router>,
-      storeInitiaState
+      <Context setStatus={setStatus}>
+        <Router context={{}} location={req.url}>
+          <App />
+        </Router>
+      </Context>
     )
   } catch (error) {
     HTML = render(ErrorPage)

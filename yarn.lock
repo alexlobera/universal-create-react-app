@@ -4972,7 +4972,7 @@ promise@7.1.1, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -5074,6 +5074,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-context-component@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-context-component/-/react-context-component-0.0.3.tgz#b753e5cdbf327817c70a006ff551ec425c1751b5"
+  dependencies:
+    react "^15.5.4"
 
 react-dev-utils@^3.0.0:
   version "3.0.0"

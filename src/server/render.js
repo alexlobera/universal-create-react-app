@@ -9,7 +9,7 @@ const css = DEV ?
   '' : // in DEV the css is hot loaded
   `<link href="/${assetManifest['main.css']}" media="all" rel="stylesheet" />`
 
-export default (component, storeInitiaState = undefined) => `
+export default (component) => `
   <!DOCTYPE html>
     <html lang="en">
       <head>
