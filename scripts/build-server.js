@@ -8,6 +8,8 @@ const assetManifest = require('../build/client/asset-manifest.json');
 if (!assetManifest) {
   console.log(chalk.red('No assets-manifest.json found. Did you run the build-client script?.\n'));
 }
+// It'd be more efficient to set different process env to avoid JSON.stringify
+// and later JSON.parse(process.env.REACT_APP_ASSET_MANIFEST || '{}'). 
 process.env.REACT_APP_ASSET_MANIFEST = JSON.stringify(assetManifest);
 
 const path = require('path');
