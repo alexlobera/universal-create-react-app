@@ -5,10 +5,9 @@
     "serve": "NODE_ENV=production node ./build/server/bundle.js",
     "start": "node scripts/start.js",
     "nodemon": "nodemon --watch build/server build/server/bundle.js build/server/bundle.js",
-    "clean-build": "node_modules/.bin/rimraf ./build",
     "build-client": "node scripts/build-client.js",
     "build-server": "node scripts/build-server.js",
-    "build": "npm run clean-build && npm run build-client && npm run build-server",
+    "build": "npm run build-client && npm run build-server",
     "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
@@ -55,7 +54,6 @@
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.0",
     "react-error-overlay": "^1.0.7",
-    "rimraf": "^2.6.1",
     "style-loader": "0.17.0",
     "sw-precache-webpack-plugin": "0.9.1",
     "url-loader": "0.5.8",

@@ -16,9 +16,12 @@ const fs = require('fs-extra');
 const webpack = require('webpack');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const config = require('../config/webpack.config.server');
+const paths = require('../config/paths');
 
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
+
+  fs.emptyDirSync(paths.serverBuild);
 
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
