@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticRouter as Router, matchPath } from 'react-router'
+import { StaticRouter as Router } from 'react-router'
 import Context from 'react-context-component'
 
 import render from './render'
