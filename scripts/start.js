@@ -112,6 +112,8 @@ choosePort(HOST, DEFAULT_CLIENT_PORT)
             if (!isServerRunning) {
               isServerRunning = true
               const nodemon = exec('nodemon --watch build/server build/server/bundle.js build/server/bundle.js')
+
+              // This is to outpout in the terminal the child process
               nodemon.stdout.on('data', function (data) {
                 console.log(data.toString());
               });
