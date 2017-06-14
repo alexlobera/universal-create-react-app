@@ -15,8 +15,7 @@
     "react": "^15.5.4",
     "react-context-component": "^0.0.3",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
-    "serve-favicon": "^2.4.3"
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",

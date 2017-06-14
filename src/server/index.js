@@ -1,5 +1,4 @@
 import express from 'express'
-import favicon from 'serve-favicon'
 import path from 'path'
 import proxy from 'http-proxy-middleware'
 
@@ -11,9 +10,6 @@ const serverPort = process.env.NODE_ENV === 'development'?
   process.env.REACT_APP_PORT || 80
 
 const app = express()
-
-app.use('/public', express.static('public'))
-app.use(favicon(path.join(__dirname, '../../public', 'favicon.ico')))
 
 if (process.env.NODE_ENV === 'production') {
   // In production we want to serve our JavaScripts from a file on the file
@@ -27,6 +23,8 @@ if (process.env.NODE_ENV === 'production') {
     logLevel: 'error'
   }));
 }
+
+app.use('/', express.static('build/client'))
 
 app.use(reactApp)
 
