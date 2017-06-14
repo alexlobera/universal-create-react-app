@@ -34,7 +34,7 @@ All the features that you have in create-react-app are included in this project,
 
 - `yarn start` will start two servers. The first one (Webpack Dev Server), to build and serve the JavaScript bundle to the client. The Second one (Express), to render the app on the server.
 - CSS Hot reloading is enabled. You'll notice a quick adjustment to the layout in development mode when you start the app. This is because while in development env the CSS is served via the Webpack Hot Module Replacement. So the app is rendered without CSS from the server, and then on the client it is injected when the JavaScript is run. If you run the app in production mode by executing `npm run serve` (note, you must first build the production bundle by executing `npm run build`), the CSS will be displayed from the beginning. The reason for this is that we don't hot replace the CSS in production.
-- "Page Not found" with a 404 status on the server side without defining any route on the server.
+- "Page Not found" with a 404 status on the server-side without defining any route on the server.
 
 ## Acknowledgments
 
