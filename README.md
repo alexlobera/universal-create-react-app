@@ -12,6 +12,9 @@ Production
 
 ![](https://gifyu.com/images/universal-build.gif)
 
+For a step by step explanation read the article
+https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d
+
 ## How to run this project
 
 - `yarn install`
@@ -35,6 +38,9 @@ There are two build scripts. One to build the JavaScript bundle that will be sen
 - /scripts/build-server.js
 
 The start script will try to run the client (Webpack Dev Server) on a given port (3000 by default). If the port is not available it will try to find another port. We have implemented the same on the port used to run the server. The start script will try to run the server (Express compiled with Webpack) on a given port (5678 by default). If the port is not available it will try to find another port.
+
+For a step by step explanation read the article
+https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d
 
 ## Features
 
