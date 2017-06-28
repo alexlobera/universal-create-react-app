@@ -11,6 +11,7 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
+    "express": "^4.15.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-context-component": "^0.0.3",
