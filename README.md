@@ -4,6 +4,14 @@ This project is a refactoring of the default app created by [create-react-app v1
 
 A universal app runs both on the server and the client, and shares as much code as possible between the server and client - typically around 90%.
 
+Development
+
+![](https://gifyu.com/images/universal-dev.gif)
+
+Production
+
+![](https://gifyu.com/images/universal-build.gif)
+
 ## How to run this project
 
 - `yarn install`
